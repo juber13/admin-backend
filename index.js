@@ -2,13 +2,14 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './db/connect.js';
 import cookieParser from 'cookie-parser';
-
+import cors from 'cors'
 dotenv.config();
 
 // connect to database
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
