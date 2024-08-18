@@ -32,9 +32,7 @@ const login = async (req, res) => {
     if ([email, password].some(field => field === "")) {
         return res.status(400).json({ error: "Email and password is required" })
     }
-    console.log({ email, password })
     const user = await User.findOne({ email });
-    console.log(user)
 
     if (!user) return res.status(400).json({ message: "User does not exits with this email" });
     const isPasswordMatch = await user.comparePassword(password, user.password);
@@ -50,9 +48,6 @@ const getUsers = async (req, res) => {
 
     const users = await User.find({});
     if (!users) return res.status(404).json({ message: "No user raised the ticket yet" });
-    //  console.log(users)
-    // const userResponse = users.toObject();
-    // delete userResponse.password;
     return res.status(200).json({ users })
 }
 

@@ -19,8 +19,6 @@ export const raiseTicket = async (req, res) => {
 export const getAllTicket = async (req, res) => {
     try {
         const token = req.query.id;
-        console.log("get all ticket");
-
         const { id, role } = jwt.decode(token, process.env.SECRETKEY);
 
         let allTickets;
@@ -63,7 +61,6 @@ export const updateTicketStatus = async (req, res) => {
         ticket: findTicket,
       });
   } catch (error) {
-    console.error(error);
     return res
       .status(500)
       .json({

@@ -5,8 +5,6 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors'
 dotenv.config();
 
-// connect to database
-
 const app = express();
 
 app.use(cors())
@@ -24,6 +22,7 @@ import authenticateUser from './middlewares/auth.js';
 
 app.use('/api/user', userRouter);
 app.use('/api/ticket', ticketRouter);
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running at ${process.env.PORT}`)
 })
